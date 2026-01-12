@@ -478,14 +478,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ac3532617625b439b59b7ecd138d84, type: 3}
+  m_Script: {fileID: 11500000, guid: f998ae9ae9268c74da52beca142797f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ballHolder: {fileID: 540777096}
-  ballPrefab: {fileID: 802244178647739909, guid: 2bc35747377f26a4f95351f9cf012c29, type: 3}
-  kickForce: 20
-  upwardForce: 5
-  initialSpawnDelay: 0
+  ballPrefab: {fileID: 5386511470969534901, guid: 2bc35747377f26a4f95351f9cf012c29, type: 3}
   respawnDelay: 1
 --- !u!1 &991678656
 GameObject:
@@ -893,6 +890,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1847538249}
+  - component: {fileID: 1847538250}
+  - component: {fileID: 1847538251}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Untagged
@@ -908,13 +907,47 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847538248}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: -0.04, z: -9.53}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.7060323, z: -0, w: 0.7081797}
+  m_LocalPosition: {x: 1.47, y: 1.4, z: -9.74}
+  m_LocalScale: {x: 0.5, y: 4.5152, z: 7.919291}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1094879116}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 89.826, z: 0}
+--- !u!114 &1847538250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847538248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5800f6bb0d95c4190e7b91b6630b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsPerGol: 1
+--- !u!65 &1847538251
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847538248}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
