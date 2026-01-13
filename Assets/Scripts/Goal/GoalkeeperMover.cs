@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GolkeeperMover : MonoBehaviour
+public class GoalkeeperMover : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float speed = 2f;

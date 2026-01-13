@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallGolState : MonoBehaviour
+public class BallGoalState : MonoBehaviour
 {
     public bool HasScored { get; private set; } = false;
 

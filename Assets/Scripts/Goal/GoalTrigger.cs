@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
-public class GolTrigger: MonoBehaviour
+public class GoalTrigger: MonoBehaviour
 {
-    [SerializeField] private int pointsPerGol = 1;
+    [SerializeField] private int pointsPerGoal = 1;
+    [SerializeField] private HUDController hud;
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Ball")) return;
 
-        var state = other.GetComponent<BallGolState>();
+        var state = other.GetComponent<BallGoalState>();
         if (state != null && state.HasScored) return;       // Ha già segnato, non fare nulla
         
         if (state != null)         {
@@ -20,7 +21,8 @@ public class GolTrigger: MonoBehaviour
 
 
         Debug.Log("Goal scored!");
-        //GameManager.Instance.AddScore(pointsPerGol);
+        hud.AddGoal(1);
+
 
     }
 }
