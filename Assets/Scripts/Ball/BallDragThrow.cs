@@ -84,9 +84,11 @@ public class BallDragThrow : MonoBehaviour
         rb.useGravity = true;
 
         rb.AddForce(direction * force, ForceMode.Impulse);
+        Destroy(gameObject, 60f); // auto-distrugge dopo 60 secondi
 
-        if (spawner != null)
-            spawner.RequestRespawn();
+        if (spawner != null) spawner.RequestRespawn();
+
+
     }
 
 
