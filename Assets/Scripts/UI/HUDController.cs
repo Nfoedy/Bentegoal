@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Timers;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 
 public class HUDController : MonoBehaviour
@@ -12,19 +8,11 @@ public class HUDController : MonoBehaviour
     [SerializeField] private TMP_Text timeText;
 
     private int goals = 0;
-    private float elapsedSeconds = 0f;
 
     private void Start()
     {
         UpdateGoalUI();
         UpdateTimeUI(0f);
-    }
-
-    private void Update()
-    {
-        // tempo che cresce
-        elapsedSeconds += Time.deltaTime;
-        UpdateTimeUI(elapsedSeconds);
     }
 
 
@@ -35,23 +23,41 @@ public class HUDController : MonoBehaviour
     }
 
 
+    public void SetTimeRemaining(float seconds)
+    {
+        UpdateTimeUI(seconds);
+    }
+
+    
+    public int GetGoals() { return goals; }
+
+
+    public void ResetHUD()
+    {
+        goals = 0;
+        UpdateGoalUI();
+        UpdateTimeUI(0f);
+    }
+
 
     private void UpdateGoalUI()
     {
-        if (goalText != null)
-        {
-            goalText.text = $"Gols: {goals}";
-        }
+        if (goalText != null) goalText.text = $"Gols: {goals}";
     }
 
-
+    
     private void UpdateTimeUI(float seconds)
     {
-        if (timeText == null) return;
+        if(timeText == null) return;
 
+        if(seconds < 0f) seconds = 0f;
+
+        // Converte i secondi (float) in minuti e secondi interi
         int total = Mathf.FloorToInt(seconds);
         int minutes = total / 60;
         int secs = total % 60;
+
         timeText.text = $"Time: {minutes:00}:{secs:00}";
     }
+
 }

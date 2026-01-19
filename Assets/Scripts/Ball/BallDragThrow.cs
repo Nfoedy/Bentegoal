@@ -12,10 +12,12 @@ public class BallDragThrow : MonoBehaviour
     [SerializeField] private float sideFactor = 0.55f;
     [SerializeField] private float upFactor = 0.35f;
 
+    // Campi tecnici
     private Rigidbody rb;
     private Camera cam;
     private BallSpawner spawner;
 
+    // Campi di stato
     private Vector2 dragStart;
     private bool dragging;
     private bool launched;
@@ -25,11 +27,10 @@ public class BallDragThrow : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        // palla pronta: non cade e non si muove
         rb.isKinematic = true;
         rb.useGravity = false;
 
-        // migliore per alte velocità
+        // Per collisioni più accurate durante il lancio veloce
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
 
@@ -56,15 +57,18 @@ public class BallDragThrow : MonoBehaviour
 
         Vector2 dragEnd = Input.mousePosition;
         Vector2 drag = dragEnd - dragStart;
-
+        
+        // Potenza del lancio basata sulla lunghezza del drag, limitata a maxDragPixels.
         Vector2 clamped = Vector2.ClampMagnitude(drag, maxDragPixels);
 
+        // Forza
         float force = clamped.magnitude * forceMultiplier;
         if (force < minForce) return;
 
-
+        // Direzione
         Vector2 dir2D = clamped.normalized;
 
+        // Trasforma il gesto 2D del mouse in una direzione 3D basata sulla camera
         Vector3 dirWorld =
             cam.transform.forward +
             cam.transform.right * (dir2D.x * sideFactor) +
@@ -77,24 +81,17 @@ public class BallDragThrow : MonoBehaviour
     {
         launched = true;
 
-        // stacca dal BallHolder ma mantiene la posizione nel mondo
         transform.SetParent(null, true);
 
         rb.isKinematic = false;
         rb.useGravity = true;
 
         rb.AddForce(direction * force, ForceMode.Impulse);
-        Destroy(gameObject, 60f); // auto-distrugge dopo 60 secondi
+        Destroy(gameObject, 60f); 
 
         if (spawner != null) spawner.RequestRespawn();
 
-
     }
-
-
-
-
-
 
 }
 

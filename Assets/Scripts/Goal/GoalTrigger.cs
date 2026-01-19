@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class GoalTrigger: MonoBehaviour
@@ -13,16 +10,11 @@ public class GoalTrigger: MonoBehaviour
         if (!other.CompareTag("Ball")) return;
 
         var state = other.GetComponent<BallGoalState>();
-        if (state != null && state.HasScored) return;       // Ha già segnato, non fare nulla
+        if (state != null && state.HasScored) return;    
         
-        if (state != null)         {
-            state.MarkScored();  // Segna che ha segnato
-        }
+        if (state != null) state.MarkScored();
 
-
-        Debug.Log("Goal scored!");
-        hud.AddGoal(1);
-
+        if(hud != null) hud.AddGoal(pointsPerGoal);
 
     }
 }
