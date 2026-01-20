@@ -8,6 +8,7 @@ public class EndGameController : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private GameObject endPanel;
     [SerializeField] private TMP_Text finalGoalText;
+    [SerializeField] private GameObject hudPanel;
 
     [Header("Scene Name")]
     [SerializeField] private string gameSceneName = "MainScene";
@@ -29,11 +30,11 @@ public class EndGameController : MonoBehaviour
 
     public void ShowEndGame(int goals)
     {
+        if (hudPanel != null) hudPanel.SetActive(false);
         endPanel.SetActive(true);
         if (audioSource != null) audioSource.PlayOneShot(matchEndSound);
         Time.timeScale = 0f; // Pausa il gioco
         if (finalGoalText != null) finalGoalText.text = $"Goals : {goals}";
-
     }
 
 

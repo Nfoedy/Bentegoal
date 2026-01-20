@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject endPanel;
     [SerializeField] private string mainMenuSceneName = "MainMenu";
     
     private bool isPaused = false;
@@ -18,7 +19,13 @@ public class PauseMenuController : MonoBehaviour
     
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (endPanel != null && endPanel.activeSelf)
+        {
+            if (isPaused) Resume();
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused) Resume();
             else Pause();

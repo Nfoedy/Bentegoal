@@ -42,7 +42,7 @@ public class HUDController : MonoBehaviour
 
     private void UpdateGoalUI()
     {
-        if (goalText != null) goalText.text = $"Gols: {goals}";
+        if (goalText != null) goalText.text = $"Goals: {goals}";
     }
 
     
