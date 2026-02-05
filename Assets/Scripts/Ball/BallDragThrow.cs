@@ -23,6 +23,9 @@ public class BallDragThrow : MonoBehaviour
     private bool launched;
 
 
+    // Prova per github desktop
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,7 +33,7 @@ public class BallDragThrow : MonoBehaviour
         rb.isKinematic = true;
         rb.useGravity = false;
 
-        // Per collisioni più accurate durante il lancio veloce
+        // Per collisioni piï¿½ accurate durante il lancio veloce
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
 
