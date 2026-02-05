@@ -10,7 +10,7 @@ public class EndGameController : MonoBehaviour
     [SerializeField] private TMP_Text finalGoalText;
     [SerializeField] private GameObject hudPanel;
 
-    [Header("Scene Name")]
+    [Header("Scene")]
     [SerializeField] private string gameSceneName = "MainScene";
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
