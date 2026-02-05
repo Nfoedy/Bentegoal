@@ -12,6 +12,8 @@ public class BallSpawner : MonoBehaviour
 
     private GameObject currentBall;
 
+    // prova prova
+
     private void Start()
     {
         SpawnBall();
