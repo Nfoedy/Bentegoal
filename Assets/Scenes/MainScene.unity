@@ -2323,6 +2323,7 @@ GameObject:
   - component: {fileID: 1183695577}
   - component: {fileID: 1183695579}
   - component: {fileID: 1183695578}
+  - component: {fileID: 1183695580}
   m_Layer: 5
   m_Name: PauseText
   m_TagString: Untagged
@@ -2403,7 +2404,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2446,6 +2447,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183695576}
   m_CullTransparentMesh: 1
+--- !u!114 &1183695580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183695576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762086d565f891c40b33a91a1d744b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  hoverColor:
+    serializedVersion: 2
+    rgba: 4278250495
 --- !u!1 &1232011601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3799,6 +3818,7 @@ GameObject:
   - component: {fileID: 2140014336}
   - component: {fileID: 2140014338}
   - component: {fileID: 2140014337}
+  - component: {fileID: 2140014339}
   m_Layer: 5
   m_Name: TextGameOver
   m_TagString: Untagged
@@ -3922,6 +3942,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140014335}
   m_CullTransparentMesh: 1
+--- !u!114 &2140014339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140014335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762086d565f891c40b33a91a1d744b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  hoverColor:
+    serializedVersion: 2
+    rgba: 4278250495
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
