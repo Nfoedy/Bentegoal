@@ -6,13 +6,12 @@ public class BallSpawner : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform ballHolder;
     [SerializeField] private GameObject ballPrefab;
+    [SerializeField] private Camera customCamera;
 
     [Header("Timing")]
     [SerializeField] private float respawnDelay = 1f;
 
     private GameObject currentBall;
-
-    // prova prova
 
     private void Start()
     {
@@ -32,10 +31,12 @@ public class BallSpawner : MonoBehaviour
         currentBall.transform.localPosition = Vector3.zero;
         currentBall.transform.localRotation = Quaternion.identity;
 
-        var drag = currentBall.GetComponent<BallDragThrow>();
+        BallDragThrow drag = currentBall.GetComponent<BallDragThrow>();
+
         if (drag != null)
         {
-            drag.Setup(Camera.main, this);
+            Camera camToUse = customCamera != null ? customCamera : Camera.main;
+            drag.Setup(camToUse, this);
         }
     }
 
@@ -50,4 +51,3 @@ public class BallSpawner : MonoBehaviour
         SpawnBall();
     }
 }
-
