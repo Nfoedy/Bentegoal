@@ -17,8 +17,8 @@ public class GoalkeeperMover : MonoBehaviour
 
     private void Update()
     {
-        float offsetX = Mathf.Sin(Time.time * speed) * range;
+        float offsetZ = Mathf.Sin(Time.time * speed) * range;
 
-        transform.position = startPos + new Vector3(offsetX, 0f, 0f);
+        transform.position = startPos + new Vector3(0f, 0f, offsetZ);
     }
 }

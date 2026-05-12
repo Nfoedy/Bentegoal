@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<camera name="IMG_0308.jpg">
+    <calibration cameraMaker="Apple" cameraModel="iPhone 13" lense="5.1 mm - Lens iPhone 13 back dual wide camera 5.1mm f/1.6" w="4032" h="3024" fx="3061.63830211" fy="3061.63830211" cx="2053.09404294" cy="1449.13590391" k1="0" k2="0" p1="0" p2="0" k3="0" skew="0" name=""/>
+    <extrinsics>
+        <rotation rowMajor="1">0 -0.998910446521 -0.0466681886369 0.102895990413 0.0464204795286 -0.993608350527 0.994692120788 -0.0048019694906 0.102783879729</rotation>
+        <translation>8.4036228441 11.8566140003 73.6514212985</translation>
+    </extrinsics>
+</camera>
