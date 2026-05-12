@@ -147,11 +147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a02536f9822624bbb13a387d3d6d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDragPixels: 250
+  maxDragPixels: 300
   forceMultiplier: 0.15
   minForce: 4
-  sideFactor: 0.55
-  upFactor: 0.35
+  sideFactor: 0.6
+  upFactor: 0.4
 --- !u!114 &-6862129266819564228
 MonoBehaviour:
   m_ObjectHideFlags: 0
