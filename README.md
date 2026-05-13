@@ -1,3 +1,4 @@
+<img width="1918" height="1078" alt="Bentegoal_1" src="https://github.com/user-attachments/assets/3a64ff57-0d11-4655-bdb4-40e71ff5f18c" />
 # Bentegoal
 
 **Bentegoal** è un mini-gioco sviluppato in Unity per il Master in Computer Game Development (Università di Verona).
@@ -41,17 +42,14 @@ Bentegoal dimostra come una meccanica di gioco semplice possa essere inserita in
 
 --- 
 
-## 📸 Media
+## 📸 Video & Media
 
+ - Link : 
 
+<img width="1918" height="1078" alt="Bentegoal_1" src="https://github.com/user-attachments/assets/1590d2bd-4072-4c36-9804-5a8428b59a93" />
+<img width="1918" height="1078" alt="Bentegoal_2" src="https://github.com/user-attachments/assets/c9989b06-9776-4b4f-9476-cf45b6d9501d" />
 
 ---
-
-
-
-
-
-
 
 
 
