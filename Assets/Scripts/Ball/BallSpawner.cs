@@ -1,18 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-
 public class BallSpawner : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform ballHolder;
     [SerializeField] private GameObject ballPrefab;
+    [SerializeField] private Camera customCamera;
 
-    [Header("Settings")]
-    [SerializeField] private float respawnDelay = 2f;
+    [Header("Timing")]
+    [SerializeField] private float respawnDelay = 1f;
 
     private GameObject currentBall;
-
 
     private void Start()
     {
@@ -21,38 +20,34 @@ public class BallSpawner : MonoBehaviour
 
     public void SpawnBall()
     {
-        if(ballHolder == null || ballPrefab == null)
+        if (ballHolder == null || ballPrefab == null)
         {
-            Debug.LogWarning("BallHolder or BallPrefab is not assigned.");
+            Debug.LogError("BallSpawner: assegna ballHolder e ballPrefab nell'Inspector.");
             return;
         }
 
         currentBall = Instantiate(ballPrefab);
-
         currentBall.transform.SetParent(ballHolder, false);
         currentBall.transform.localPosition = Vector3.zero;
         currentBall.transform.localRotation = Quaternion.identity;
 
-        var drag = currentBall.GetComponent<BallDragThrow>();
-        if(drag != null)
+        BallDragThrow drag = currentBall.GetComponent<BallDragThrow>();
+
+        if (drag != null)
         {
-            drag.Setup(Camera.main, this);
+            Camera camToUse = customCamera != null ? customCamera : Camera.main;
+            drag.Setup(camToUse, this);
         }
-
     }
-
 
     public void RequestRespawn()
     {
-        StartCoroutine(RespawnCoroutine());
+        StartCoroutine(RespawnRoutine());
     }
 
-    
-    private IEnumerator RespawnCoroutine()
-    {   
-        // Yield = 
+    private IEnumerator RespawnRoutine()
+    {
         yield return new WaitForSeconds(respawnDelay);
         SpawnBall();
-
     }
 }

@@ -1,41 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class BallDragThrow : MonoBehaviour
 {
-
     [Header("Drag -> Force")]
-    [SerializeField] private float maxDragPixels = 250f;        // Per non sparare la palla sulla luna
-    [SerializeField] private float forceMultiplier = 0.06f;     // bilancia la forza applicata
-    [SerializeField] private float minForce = 4f;               // forza minima per il lancio
+    [SerializeField] private float maxDragPixels = 250f;
+    [SerializeField] private float forceMultiplier = 0.06f;
+    [SerializeField] private float minForce = 4f;
 
     [Header("Aim")]
-    [SerializeField] private float sideFactor = 0.55f;          // bilancia la forza laterale
-    [SerializeField] private float upFactor = 0.3f;             // bilancia la forza verso alto e basso
+    [SerializeField] private float sideFactor = 0.55f;
+    [SerializeField] private float upFactor = 0.35f;
 
+    // Campi tecnici
+    private Rigidbody rb;
+    private Camera cam;
+    private BallSpawner spawner;
 
-    private Rigidbody rb;               // Attiva fisica per lanciare
-    private Camera cam;                 // per convertire il drag 2D in direzione 3D
-    private BallSpawner spawner;        // per richiamare RequestRespawn dopo il lancio
-
-    private Vector2 dragStart;          // punto di partenza del mouse
-    private bool dragging;              // stato per evitare il doppio tiro
+    // Campi di stato
+    private Vector2 dragStart;
+    private bool dragging;
     private bool launched;
 
 
-    // Prepara la palla per essere lanciata
+    // Prova per github desktop
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        
-        rb.isKinematic = true;    // disabilita fisica finché non viene lanciata
+
+        rb.isKinematic = true;
         rb.useGravity = false;
 
+        // Per collisioni piï¿½ accurate durante il lancio veloce
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
-
 
     public void Setup(Camera camera, BallSpawner ballSpawner)
     {
@@ -43,36 +43,38 @@ public class BallDragThrow : MonoBehaviour
         spawner = ballSpawner;
     }
 
-
     private void OnMouseDown()
     {
-        if(launched) return;
+        if (launched) return;
 
-        if(cam == null) cam = Camera.main;
+        if (cam == null) cam = Camera.main;
 
         dragging = true;
         dragStart = Input.mousePosition;
     }
 
-
     private void OnMouseUp()
     {
-        if(!dragging || launched) return;
+        if (!dragging || launched) return;
         dragging = false;
 
         Vector2 dragEnd = Input.mousePosition;
         Vector2 drag = dragEnd - dragStart;
-
-        // Limita il drag massimo
+        
+        // Potenza del lancio basata sulla lunghezza del drag, limitata a maxDragPixels.
         Vector2 clamped = Vector2.ClampMagnitude(drag, maxDragPixels);
 
+        // Forza
         float force = clamped.magnitude * forceMultiplier;
-        if(force < minForce) return;
+        if (force < minForce) return;
 
+        // Direzione
         Vector2 dir2D = clamped.normalized;
 
-        Vector3 dirWorld = cam.transform.forward + 
-            cam.transform.right * (dir2D.x * sideFactor) + 
+        // Trasforma il gesto 2D del mouse in una direzione 3D basata sulla camera
+        Vector3 dirWorld =
+            cam.transform.forward +
+            cam.transform.right * (dir2D.x * sideFactor) +
             cam.transform.up * (dir2D.y * upFactor);
 
         Launch(dirWorld.normalized, force);
@@ -82,17 +84,17 @@ public class BallDragThrow : MonoBehaviour
     {
         launched = true;
 
-        // Stacca la palla dal bollHolder ma mantiene la posizione nel mondo
         transform.SetParent(null, true);
 
         rb.isKinematic = false;
         rb.useGravity = true;
 
-        rb.AddForce(direction * force, ForceMode.VelocityChange);
+        rb.AddForce(direction * force, ForceMode.Impulse);
+        Destroy(gameObject, 60f); 
 
-        if(spawner != null)
-        {
-            spawner.RequestRespawn();
-        }
+        if (spawner != null) spawner.RequestRespawn();
+
     }
+
 }
+
