@@ -149,9 +149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDragPixels: 300
   forceMultiplier: 0.15
-  minForce: 4
+  minForce: 3.4
   sideFactor: 0.6
-  upFactor: 0.4
+  upFactor: 0.45
 --- !u!114 &-6862129266819564228
 MonoBehaviour:
   m_ObjectHideFlags: 0
