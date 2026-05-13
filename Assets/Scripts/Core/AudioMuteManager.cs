@@ -1,6 +1,4 @@
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
-
 public class AudioMuteManager : MonoBehaviour
 {
     private const string PREF_KEY = "BENTEGOAL_MUTED";
